@@ -1,9 +1,7 @@
 // JavaScript Document
 
 // 18534596859 KM on June 28, 2013
-// 18534531469
-// 18534531469
-// 18536038674.32148
+// 18241431931.5307
 
 /*
     Handles updating of Voyager Distances from Earth and the Sun
@@ -15,13 +13,11 @@
             return current_unix;
         }
 
-        console.log(timestamp());
-
-        var epoch_0 = timestamp();
+        // var epoch_0 = timestamp();
+        var epoch_0 = 1372521200;
         var epoch_1 = 1372521600;
-                   // 1372471224
 
-        var current_time = 1372463262;
+        var current_time = timestamp();
 
         var dist_0_v1 = 18533806466.7504;
         var dist_1_v1 = 18536038674.2265;
@@ -51,7 +47,7 @@
 // var dist_0_v2s = 14204601577.2787;
 // var dist_1_v2s = 14205894342.6130;
 
-console.log("hello");
+console.log("Voyager 1 & Voyager 2 - Live Distance From Earth");
 
 var current_dist_km_v1 = 0;
 var current_dist_au_v1 = 0;
@@ -71,9 +67,6 @@ var Test = {};
 
 Test.activate = function( data )
 {
-    // console.log(current_time);
-
-    // var current_time = new Date().getTime();
 
     current_dist_km_v1 = ( ( ( current_time - epoch_0 ) / ( epoch_1 - epoch_0 ) ) * ( dist_1_v1 - dist_0_v1 ) ) + dist_0_v1;
     current_dist_au_v1 = (current_dist_km_v1/au_const) + '';
@@ -101,22 +94,9 @@ Test.activate = function( data )
     console.log("V1 current distance km: ", current_dist_km_v1);
     console.log("V2 current distance km: ", current_dist_km_v2);
 
-    document.getElementById('voy1_km').innerHTML = addCommas( Math.round(current_dist_km_v1) + " KM" );
-    // document.getElementById('voy1_au').innerHTML = addCommas( current_dist_au_v1 ) + " AU";
+    // document.getElementById('voy1_km').innerHTML = addCommas( Math.round(current_dist_km_v1) + " KM" );
 
-    // document.getElementById('voy2_km').innerHTML = addCommas( Math.round(current_dist_km_v2) + " KM" );
-    // document.getElementById('voy2_au').innerHTML = addCommas( current_dist_au_v2 ) + " AU";
-
-    // document.getElementById('voy1_kms').innerHTML = addCommas( Math.round(current_dist_km_v1s) + " KM" );
-    // document.getElementById('voy1_aus').innerHTML = addCommas( current_dist_au_v1s ) + " AU";
-
-    // document.getElementById('voy2_kms').innerHTML = addCommas( Math.round(current_dist_km_v2s) + " KM");
-    // document.getElementById('voy2_aus').innerHTML = addCommas( current_dist_au_v2s ) + " AU";
-
-    // document.getElementById('voy1_lt').innerHTML = formatSeconds(current_dist_lt_v1);
-    // document.getElementById('voy2_lt').innerHTML = formatSeconds(current_dist_lt_v2);
-
-    alert("dist_controller.addCommas( Math.round(current_dist_km_v1) ): " + addCommas( Math.round(current_dist_km_v1) ));
+    // alert("dist_controller.addCommas( Math.round(current_dist_km_v1) ): " + addCommas( Math.round(current_dist_km_v1) ));
 
     current_time += 0.5;
 }
