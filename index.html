@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <script type="text/javascript" scr="js/vendor/jquery.min.js"></script>
+    <script type="text/javascript" scr="js/nasa.js"></script>
+    </head>
+    <script type="text/javascript" src="js/voyager.js"></script>
+    <script type="text/javascript">
+        <!--
+        var epoch_0 = 1372435200;
+        var epoch_1 = 1372521600;
+
+        var current_time = 1372463262;
+
+        var dist_0_v1 = 18533806466.7504;
+        var dist_1_v1 = 18536038674.2265;
+
+        var dist_0_v2 = 15145467341.6668;
+        var dist_1_v2 = 15146295497.2157;
+
+        var dist_0_v1s = 18649805826.7186;
+        var dist_1_v1s = 18651272007.7449;
+
+        var dist_0_v2s = 15267044067.4051;
+        var dist_1_v2s = 15268339541.7137;
+        -->
+    </script>
+
+    <script type="text/javascript">
+
+        (function () {
+            // Start Voyager distance updates
+            setInterval('dist_controller()',500);
+        });
+
+    </script>
+
+    <script type="text/javascript">
+
+        /* You may give each page an identifying name, server, and channel on the next lines. */
+        // s.pageName=s.eVar5="Voyager: Where Are the Voyagers?";
+        // s.channel="Where";
+
+        /************* DO NOT ALTER ANYTHING BELOW THIS LINE ! **************/
+        // var s_code=s.t();
+        // if(s_code)document.write(s_code)
+
+    </script>
+
+    <body>
+        <div id="voy1_km"></div>
+        <div id="voy1_au"></div>
+    </body>
+</html>
