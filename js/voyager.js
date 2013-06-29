@@ -6,46 +6,32 @@
 /*
     Handles updating of Voyager Distances from Earth and the Sun
 */
-        var timestamp = function () {
+var timestamp = function () {
+    var millisecondsInMinute = 60000;
+    var timezoneOffset       = new Date().getTimezoneOffset(); // in minutes
+    var millisecondsOffset   = timezoneOffset * millisecondsInMinute;
+    var timestamp            = new Date().getTime();
+    var UTC_timestamp        = timestamp + millisecondsOffset;
+    var current_UNIX_UTC     = Math.round((new Date().getTime() / 1000));
 
-            var current_unix = Math.round((new Date()).getTime() / 1000);
+    console.log("Timezone Offset: ", timezoneOffset * 60000);
+    console.log("Regular timestamp: ", new Date().getTime());
+    console.log("UNIX UTC timestamp: ", current_UNIX_UTC);
 
-            return current_unix;
-        }
+    return current_UNIX_UTC;
+}
 
-        // var epoch_0 = timestamp();
-        var epoch_0 = 1372521200;
-        var epoch_1 = 1372521600;
-
-        var current_time = timestamp();
-
-        var dist_0_v1 = 18533806466.7504;
-        var dist_1_v1 = 18536038674.2265;
-
-        var dist_0_v2 = 15145467341.6668;
-        var dist_1_v2 = 15146295497.2157;
-
-        var dist_0_v1s = 18649805826.7186;
-        var dist_1_v1s = 18651272007.7449;
-
-        var dist_0_v2s = 15267044067.4051;
-        var dist_1_v2s = 15268339541.7137;
-// var epoch_0 = 1301500800; //1281510000;
-// var epoch_1 = 1301587200; //1281596400;
-
-// var current_time = 1301523931;
-
-// var dist_0_v1 = 17396281625.1305;
-// var dist_1_v1 = 17395807835.8111;
-
-// var dist_0_v2 = 14227951893.7668;
-// var dist_1_v2 = 14227140609.8932;
-
-// var dist_0_v1s = 17445817009.5116;
-// var dist_1_v1s = 17447283910.3447;
-
-// var dist_0_v2s = 14204601577.2787;
-// var dist_1_v2s = 14205894342.6130;
+var current_time    = timestamp();
+var epoch_0         = 1372521200;
+var epoch_1         = 1372521600;
+var dist_0_v1       = 18533806466.7504;
+var dist_1_v1       = 18536038674.2265;
+var dist_0_v2       = 15145467341.6668;
+var dist_1_v2       = 15146295497.2157;
+var dist_0_v1s      = 18649805826.7186;
+var dist_1_v1s      = 18651272007.7449;
+var dist_0_v2s      = 15267044067.4051;
+var dist_1_v2s      = 15268339541.7137;
 
 console.log("Voyager 1 & Voyager 2 - Live Distance From Earth");
 
@@ -91,8 +77,12 @@ Test.activate = function( data )
     current_dist_lt_v1 = current_dist_km_v1 * 2 / 299792.458;
     current_dist_lt_v2 = current_dist_km_v2 * 2 / 299792.458;
 
-    console.log("V1 current distance km: ", current_dist_km_v1);
-    console.log("V2 current distance km: ", current_dist_km_v2);
+    var time = new Date().toUTCString();
+
+    console.log("V1 current distance km: ", current_dist_km_v1, "TIME: ", time);
+    console.log("V2 current distance km: ", current_dist_km_v2, "TIME: ", time);
+
+    // document.write("V1 km: ", current_dist_km_v1, "TIME: ", time);
 
     // document.getElementById('voy1_km').innerHTML = addCommas( Math.round(current_dist_km_v1) + " KM" );
 
